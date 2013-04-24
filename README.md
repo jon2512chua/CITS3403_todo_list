@@ -1,5 +1,14 @@
 #CITS3403_todo_list
 
+#Roles
+##Back-end
+- Jon 
+- Alvar
+
+##Front-end
+- Patrick
+- Alex
+
 ##Front-end
 ###Must haves
 - add/edit/delete new list
@@ -12,3 +21,4 @@
 
 ##Things to note
 - Use jQuery
+- Use MySQL
