@@ -1,11 +1,11 @@
 #CITS3403_todo_list
 
 #Roles
-##Back-end
+###Back-end
 - Jon 
 - Alvar
 
-##Front-end
+###Front-end
 - Patrick
 - Alex
 
@@ -23,6 +23,6 @@
 - Use jQuery
 - Use MySQL
 
-#By Next Meeting
+##By Next Meeting
 - Complete front-end (web layout, skeleton, know what needs to be interacted with)
 - Database setup (Rails... CRUD)
