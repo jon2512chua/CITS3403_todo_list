@@ -22,3 +22,7 @@
 ##Things to note
 - Use jQuery
 - Use MySQL
+
+#By Next Meeting
+- Complete front-end (web layout, skeleton, know what needs to be interacted with)
+- Database setup (Rails... CRUD)
