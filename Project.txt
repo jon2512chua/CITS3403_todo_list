@@ -1,0 +1,14 @@
+2013 04 24 - CITS3403 Project Stag II Meeting
+
+== use jquery
+
+== front-end
+    = add/edit/delete new list
+    = show that tasks are completed
+    = left panel project names (shared)
+    = create shared project
+    = due date/reminder(frequency)
+
+    - keyboard shortcuts
+    - jumping sections
+    - fix header position (position: fixed)
