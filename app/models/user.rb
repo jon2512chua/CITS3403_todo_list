@@ -1,3 +1,4 @@
 class User < ActiveRecord::Base
-    has_many :todos
+  has_many :tweets
+  attr_accessible :email, :name
 end
