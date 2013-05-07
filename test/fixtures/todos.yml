@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: todos
+#
+#  id         :integer          not null, primary key
+#  content    :string(255)
+#  user_id    :integer
+#  due_date   :date
+#  completed  :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  user_id: 1
+  due_date: 2013-05-07
+  completed: false
+
+two:
+  content: MyString
+  user_id: 1
+  due_date: 2013-05-07
+  completed: false

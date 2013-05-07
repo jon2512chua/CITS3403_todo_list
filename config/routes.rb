@@ -1,4 +1,16 @@
 CITS3403TodoList::Application.routes.draw do
+  get "users/new"
+
+  match '/signup', to: "users#new"
+  resources :todo_lists
+
+
+  resources :todos
+
+
+  resources :users
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
