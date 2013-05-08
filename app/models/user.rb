@@ -15,7 +15,7 @@
 class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   
-  has_and_belongs_to :todolists
+  has_and_belongs_to_many :todolists
   attr_accessible :email, :name, :password, :password_confirmation
   validates :name, :presence => true, :length => {:minimum => 2}
   validates :email, :presence => true, :format => {:with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/}, :uniqueness => { case_sensitive: false }
