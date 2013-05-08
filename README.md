@@ -26,3 +26,9 @@
 ##By Next Meeting
 - Complete front-end (web layout, skeleton, know what needs to be interacted with)
 - Database setup (Rails... CRUD)
+
+## CSSE Linux Server
+- cits3403.csse.uwa.edu.au
+- add therubyracer gem
+- symbolic link to proj/public (ln -s proj/public public_html/proj 
+
