@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CITS3403TodoList::Application.load_tasks
+Todolist::Application.load_tasks
