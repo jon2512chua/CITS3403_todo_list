@@ -10,16 +10,25 @@
 #  password_digest       :string(255)
 #  password              :string(255)
 #  password_confirmation :string(255)
+#  username              :string(255)
 #
 
 class User < ActiveRecord::Base
-  before_save { |user| user.email = email.downcase }
-  
-  has_and_belongs_to_many :todolists
-  attr_accessible :email, :name, :password, :password_confirmation
-  validates :name, :presence => true, :length => {:minimum => 2}
-  validates :email, :presence => true, :format => {:with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/}, :uniqueness => { case_sensitive: false }
-  validates :password, :presence => true, :length => { minimum: 6 }
+  attr_accessible :username, :name, :email, :password, :password_confirmation
   has_secure_password
+
+  before_save { email.downcase! }
+  
+  #has_and_belongs_to_many :todolists 
+
+  validates :username, :presence => true, :length => {:minimum => 3},
+            :format => {:with => /^[a-z0-9_-]{3,16}$/}, 
+            #usernames between 3 and 16 characters
+            :uniqueness => true
+  validates :name, :presence => true, :length => {:minimum => 2}
+  validates :email, :presence => true, 
+            :format => {:with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/}, 
+            :uniqueness => { case_sensitive: false }
+  validates :password, :presence => true, :length => { minimum: 6 }
   validates :password_confirmation, :presence => true
 end
