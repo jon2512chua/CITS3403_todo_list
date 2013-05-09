@@ -1,7 +1,7 @@
 <div class="row">
-  <aside class="span5">
+  <aside class="span5 offset3">
     <% provide(:title, @user.username) %>
-    <h1><%= @user.username></h1>
+    <h1><%= @user.username %></h1>
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -12,15 +12,6 @@
     </section>
   </aside>
 </div>
-<!-- <h1> -->
-<!--   <%= gravatar_for @user %> -->
-  <!-- <%= @user.name %> -->
-<!-- </h1> -->
-
-<!-- <p> -->
-  <!-- <b>Name:</b> -->
-  <!-- <%= @user.name %> -->
-<!-- </p> -->
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
