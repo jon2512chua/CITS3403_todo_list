@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
   <title>CITS3403TodoList</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -11,7 +10,7 @@
 	<% flash.each do |key, value| %>
 	<%= content_tag(:div, value, class: "alert alert-#{key}") %>
 	<% end %>
-	
+
 	<%= yield %>
   
 </body>
