@@ -29,6 +29,6 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, 
             :format => {:with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/}, 
             :uniqueness => { case_sensitive: false }
-  validates :password, :presence => true, :length => { minimum: 6 }
+  validates :password, :length => { minimum: 6 }
   validates :password_confirmation, :presence => true
 end
