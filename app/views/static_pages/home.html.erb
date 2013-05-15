@@ -1,9 +1,8 @@
-<div class="row">
-	<div class="span6 offset3">
-		<% provide(:title, 'Home') %>
-		<h1>My Todos</h1>
-		<p>
-		  This is the home page for My Todos.
-		</p>
-	</div>
+<div class="center hero-unit">
+	<% provide(:title, 'Home') %>
+	<h1>My Todos</h1>
+	<p>
+	  This is the home page for My Todos.
+	</p>
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
