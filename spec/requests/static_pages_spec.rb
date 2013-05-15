@@ -34,5 +34,20 @@ describe "Static pages" do
       page.should have_selector('title',
                         :text => "#{base_title} | About")
     end        
-  end    
+  end   
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    page.should have_selector 'title', text: full_title('About')
+    click_link "Help"
+    page.should have_selector 'title', text: full_title('Help')
+    click_link "Home"
+    click_link "Sign up now!"
+    page.should have_selector 'title', text: full_title('Sign up')
+    click_link "My Todos"
+    page.should have_selector 'title', text: full_title('My Todos')
+    click_link "Sign in"
+    page.should have_selector 'title', text: full_title('Sign in')
+  end
 end
