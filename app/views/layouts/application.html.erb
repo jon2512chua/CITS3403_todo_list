@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CITS3403TodoList</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<% flash.each do |key, value| %>
-	<%= content_tag(:div, value, class: "alert alert-#{key}") %>
-	<% end %>
-
-	<%= yield %>
-  
-</body>
+  <head>
+	    <title>My Todos | <%= yield(:title) %></title>
+	    <%= stylesheet_link_tag    "application", :media => "all" %>
+	    <%= javascript_include_tag "application" %>
+	    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+		<div class="container">  	
+    	<%= yield %>
+      <%= render 'layouts/footer' %>    		
+		</div>	
+  </body>
 </html>
