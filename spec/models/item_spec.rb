@@ -22,6 +22,26 @@ describe Item do
     it { should_not be_valid }
   end
 
+  describe "with blank content" do
+    before { @item.content = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with blank name" do
+    before { @item.name = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with content that is too long" do
+    before { @item.content = "a" * 141 }
+    it { should_not be_valid }
+  end
+
+  describe "with name that is too long" do
+    before { @item.name = "a" * 81 }
+    it { should_not be_valid }
+  end
+
   describe "accessible attributes" do
     it "should not allow access to user_id" do
       expect do

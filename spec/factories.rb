@@ -10,4 +10,10 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :item do
+    name "Item 1"
+    content "Item description 1"
+    user
+  end
 end
