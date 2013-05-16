@@ -1,41 +1,7 @@
 require 'spec_helper'
+# full_path defined in spec/support/utilities.rb
 
 describe "Static pages" do
-	let(:base_title) { "My Todos" }
-
-  describe "Home page" do
-		before { visit root_path }
-    it "should have the h1 'My Todos'" do
-      page.should have_selector('h1', :text => 'My Todos')
-    end
-    it "should have the title 'Home'" do
-      page.should have_selector('title',
-                        :text => "#{base_title} | Home")
-    end    
-  end
-
-  describe "Help page" do
-  	before { visit help_path }
-    it "should have the h1 'Help'" do
-      page.should have_selector('h1', :text => 'Help')
-    end
-    it "should have the title 'Help'" do
-      page.should have_selector('title',
-                        :text => "#{base_title} | Help")
-    end        
-  end  
-
-  describe "About page" do
-  	before { visit about_path }
-    it "should have the h1 'About'" do
-      page.should have_selector('h1', :text => 'About')
-    end
-    it "should have the title 'About'" do
-      page.should have_selector('title',
-                        :text => "#{base_title} | About")
-    end        
-  end   
-
   it "should have the right links on the layout" do
     visit root_path
     click_link "About"
@@ -49,5 +15,27 @@ describe "Static pages" do
     page.should have_selector 'title', text: full_title('My Todos')
     click_link "Sign in"
     page.should have_selector 'title', text: full_title('Sign in')
+  end
+
+  describe "Home page" do
+		before { visit root_path }
+
+    it { should have_selector('h1',    text: 'Sample App') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector 'title', text: '| Home' }
+  end
+
+  describe "Help page" do
+  	before { visit help_path }
+
+    it { should have_selector('h1',    text: 'Help') }
+    it { should have_selector('title', text: full_title('Help')) }  
+  end  
+
+  describe "About page" do
+  	before { visit about_path }
+
+    it { should have_selector('h1',    text: 'About') }
+    it { should have_selector('title', text: full_title('About')) }
   end
 end

@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_save { email.downcase! }
+  before_save :create_remember_token
   
   #has_and_belongs_to_many :todolists 
 
@@ -31,4 +32,10 @@ class User < ActiveRecord::Base
             :uniqueness => { case_sensitive: false }
   validates :password, :length => { minimum: 6 }
   validates :password_confirmation, :presence => true
+  private 
+  def create_remember_token
+    # Using self ensures that assignment sets the user’s remember_token so that 
+    # it will be written to the database along with the other attributes when the user is saved.
+    self.remember_token = SecureRandom.urlsafe_base64
+  end    
 end
