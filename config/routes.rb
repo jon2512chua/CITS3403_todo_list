@@ -2,9 +2,14 @@ CITS3403TodoList::Application.routes.draw do
   root to: 'static_pages#home'
   resources :todo_lists
   resources :todos
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :todos, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]  
 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'

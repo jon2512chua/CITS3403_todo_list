@@ -34,7 +34,10 @@ describe User do
   it { should respond_to(:password_confirmation) }  
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
-  it { should respond_to(:todos) }  
+  it { should respond_to(:todos) } 
+  it { should respond_to(:feed) }
+  it { should respond_to(:relationships) }  
+  it { should respond_to(:followed_users) }  
 
   it { should be_valid }
   it { should_not be_admin }
@@ -178,5 +181,36 @@ describe User do
       its(:feed) { should_not include(unfollowed_todo) }
     end
   end    
+  describe "todo associations" do
+    before { @user.save }
+    let!(:older_todo) do 
+      FactoryGirl.create(:todo, user: @user, due_date: Date.today, created_at: 1.day.ago)
+    end
+    let!(:newer_todo) do
+      FactoryGirl.create(:todo, user: @user, due_date: Date.tomorrow, created_at: 1.hour.ago)
+    end
+    .
+    .
+    .
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:todo, user: FactoryGirl.create(:user))
+      end
+      let(:followed_user) { FactoryGirl.create(:user) }
 
+      before do
+        @user.follow!(followed_user)
+        3.times { followed_user.todos.create!(content: "Lorem ipsum") }
+      end
+
+      its(:feed) { should include(newer_todo) }
+      its(:feed) { should include(older_todo) }
+      its(:feed) { should_not include(unfollowed_post) }
+      its(:feed) do
+        followed_user.todos.each do |todo|
+          should include(todo)
+        end
+      end
+    end
+  end
 end  
