@@ -1,6 +1,5 @@
 <div class="row">
   <aside class="span5 offset3">
-    <%= render 'layouts/header' %>
     <% provide(:title, @user.username) %>
     <h1><%= @user.username %></h1>
     <section>
@@ -13,6 +12,3 @@
     </section>
   </aside>
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

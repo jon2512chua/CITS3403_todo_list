@@ -31,4 +31,3 @@
 - cits3403.csse.uwa.edu.au
 - add therubyracer gem
 - symbolic link to proj/public (ln -s proj/public public_html/proj 
-

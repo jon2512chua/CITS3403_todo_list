@@ -12,7 +12,7 @@ describe "Static pages" do
     click_link "Sign up now!"
     page.should have_selector 'title', text: full_title('Sign up')
     click_link "My Todos"
-    page.should have_selector 'title', text: full_title('My Todos')
+    page.should have_selector 'title', text: full_title('Home')
     click_link "Sign in"
     page.should have_selector 'title', text: full_title('Sign in')
   end
@@ -20,9 +20,8 @@ describe "Static pages" do
   describe "Home page" do
 		before { visit root_path }
 
-    it { should have_selector('h1',    text: 'Sample App') }
-    it { should have_selector('title', text: full_title('')) }
-    it { should_not have_selector 'title', text: '| Home' }
+    it { should have_selector('h1',    text: 'My Todos') }
+    it { should_not have_selector 'title', text: full_title('Home') }
   end
 
   describe "Help page" do
