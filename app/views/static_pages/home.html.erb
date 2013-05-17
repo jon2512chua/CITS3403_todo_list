@@ -1,19 +1,29 @@
-<div id="home">
-  <div class="reason">
-    <h2>Create.</h2>
-    <p>Tasks are easy to add so you can get started right away.</p>	
-    <%=image_tag("preview1.png", alt: "Preview of todolist", id: "preview1") %>
-  </div>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/item_form' %>
+      </section>
+    </aside>
+  </div>  
+<% else %>
+  <div id="home">
+    <div class="reason">
+      <h2>Create.</h2>
+      <p>Tasks are easy to add so you can get started right away.</p>	
+      <%=image_tag("preview1.png", alt: "Preview of todolist", id: "preview1") %>
+    </div>
 
-  <div class="reason">
-    <h2>Follow through.</h2>
-    <p>Receive reminders before tasks are due.</p>
-    <%=image_tag("preview2.png", alt: "Preview of reminder") %>
-  </div>
+    <div class="reason">
+      <h2>Follow through.</h2>
+      <p>Receive reminders before tasks are due.</p>
+      <%=image_tag("preview2.png", alt: "Preview of reminder") %>
+    </div>
 
-  <div class="reason">
-    <h2>Share</h2>
-    <p>Motivate each other by sharing your lists.</p>
-    <%=image_tag("preview3.png", alt: "Preview of sharing") %>
+    <div class="reason">
+      <h2>Share</h2>
+      <p>Motivate each other by sharing your lists.</p>
+      <%=image_tag("preview3.png", alt: "Preview of sharing") %>
+    </div>
   </div>
-</div>
+<% end %>
