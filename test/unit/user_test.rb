@@ -12,7 +12,6 @@
 #  password_confirmation :string(255)
 #  username              :string(255)
 #  remember_token        :string(255)
-#  admin                 :boolean          default(FALSE)
 #
 
 require 'test_helper'

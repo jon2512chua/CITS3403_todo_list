@@ -4,6 +4,7 @@ CITS3403TodoList::Application.routes.draw do
   resources :todos
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :todos, only: [:create, :destroy]
 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'

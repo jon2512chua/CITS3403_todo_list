@@ -50,10 +50,21 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:t1) { FactoryGirl.create(:todo, user: user, content: "Foo", due_date: Date.today ) }
+    let!(:t2) { FactoryGirl.create(:todo, user: user, content: "Bar", due_date: Date.today ) }
+
   	before { visit user_path(user) }
     
     it { should have_selector('h1',    text: user.username) }
     it { should have_selector('title', text: user.username) }
+
+    describe "todos" do
+      it { should have_content(t1.content) }
+      it { should have_content(t2.content) }
+      it { should have_due_date(t1.due_date) }
+      it { should have_due_date(t2.due_date) }      
+      it { should have_content(user.todos.count) }
+    end    
   end
 
   describe "signup" do
@@ -119,7 +130,7 @@ describe "User pages" do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in "Confirmation", with: user.password
         click_button "Save"
       end
 

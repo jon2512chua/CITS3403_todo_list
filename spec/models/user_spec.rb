@@ -12,7 +12,6 @@
 #  password_confirmation :string(255)
 #  username              :string(255)
 #  remember_token        :string(255)
-#  admin                 :boolean          default(FALSE)
 #
 
 
@@ -35,6 +34,7 @@ describe User do
   it { should respond_to(:password_confirmation) }  
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:todos) }  
 
   it { should be_valid }
   it { should_not be_admin }
@@ -140,5 +140,43 @@ describe User do
       specify { user_for_invalid_password.should be_false }
     end
   end  
+
+  describe "todo associations" do
+    before { @user.save }
+    # uses the let! method in place of let; 
+    # let variables only spring into existence when referenced. 
+    # 
+    # The problem is that we want the todos to exist immediately, 
+    # so that the timestamps are in the right order and so that @user.todos isn’t empty
+    let!(:older_todo) do 
+      FactoryGirl.create(:todo, user: @user, due_date: Date.today, created_at: 1.day.ago)
+    end
+    let!(:newer_todo) do
+      FactoryGirl.create(:todo, user: @user, due.date: Date.tomorrow, created_at: 1.hour.ago)
+    end
+    it "should have the right todos in the reverse chronological order" do
+      # This test also verifies the basic correctness of the has_many association itself, 
+      # by checking that user.todos is an array of todos.
+      @user.todos.should == [newer_todo, older_todo]
+    end
+    it "should destroy associated todos" do
+      todos = @user.todos.dup
+      @user.destroy
+      todos.should_not be_empty
+      todos.each do |toodo|
+        Todo.find_by_id(todo.id).should be_nil
+      end
+    end
+
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:todo, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_todo) }
+      its(:feed) { should include(older_todo) }
+      its(:feed) { should_not include(unfollowed_todo) }
+    end
+  end    
 
 end  

@@ -58,6 +58,19 @@ describe "Authentication" do
           end
         end
       end
+      describe "in the Todos controller" do
+
+        describe "submitting to the create action" do
+          before { post todos }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete todo_path(FactoryGirl.create(:todo)) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end  
+
       describe "in the Users controller" do
 
         describe "visiting the edit page" do

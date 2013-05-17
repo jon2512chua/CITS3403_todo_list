@@ -1,8 +1,10 @@
 class TodosController < ApplicationController
   before_filter :get_todo, :only => [:edit, :show, :update, :destroy]
+  before_filter :signed_in_user, only: [:create, :destroy]  
+  before_filter :correct_user,   only: :destroy
 
   def get_todo
-    @todo = Todo.find(params[:id])
+    @todo = Todo.find_by_id(params[:id])
   end
 
   # GET /todos
@@ -41,16 +43,17 @@ class TodosController < ApplicationController
   end
 
   # POST /todos
-  # POST /todos.json
+  # POST /todos.json  
   def create
-    @todo = Todo.new(params[:todo])
-
+    @todo = current_user.todos.build(params[:todo])
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
+        flash[:success] = 'Todo was successfully created.' 
+        format.html { redirect_to @todo }
         format.json { render json: @todo, status: :created, location: @todo }
       else
-        format.html { render action: "new" }
+        @feed_items = []
+        format.html { render 'static_pages/home' }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
@@ -61,7 +64,8 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+        flash[:success] = 'successfully updated'
+        format.html { redirect_to @todo }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +80,14 @@ class TodosController < ApplicationController
     @todo.destroy
 
     respond_to do |format|
-      format.html { redirect_to todos_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    def correct_user
+      @todo = current_user.todos.find_by_id(params[:id])
+      redirect_to root_url if @todo.nil?
+    end  
 end

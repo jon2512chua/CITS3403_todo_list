@@ -8,8 +8,13 @@ FactoryGirl.define do
 
     factory :admin do
       admin true
-    end
+    end    
   end
+  factory :todo do
+    content "Lorem ipsum"
+    user
+    due_date Date.tomorrow
+  end  
 end
 
   # FactoryGirl.define do

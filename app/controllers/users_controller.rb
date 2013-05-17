@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :get_user, :only => [:edit, :show, :update, :destroy]
-
+  before_filter :get_user, only: [:edit, :show, :update, :destroy]
+  before_filter :signed_in_user, only: [:edit, :index, :update, :destroy]
+  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :admin_user,     only: :destroy
+  
   def get_user
     @user = User.find(params[:id])
   end
@@ -8,7 +11,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    # @users = User.all
+
+    # provided by gem: paginate
+    # ActiveRecord::Relation object returned by the paginate method added by the will_paginate gem 
+    # to all Active Record objects
+    @users = User.paginate(page: params[:page]) 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,6 +27,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    # paginate even works through the todos association, 
+    # reaching into the todos table and pulling out the desired page of todos.
+    @todos = @user.todos.paginate(page: params[:page])    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -37,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
+  def edit   
   end
 
   # POST /users
@@ -47,7 +58,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save 
-        sign_in @user
+        sign_in @user # doesn't sign in after sign up
         flash[:success] = "Welcome to My Todos!"       
         format.html { redirect_to @user }
         format.json { render json: @user, status: :created, location: @user }
@@ -63,7 +74,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:success] = "User successfully updated."        
+        sign_in @user
+        flash[:success] = "User successfully updated."
         format.html { redirect_to @user }
         format.json { head :no_content }
       else
@@ -77,10 +89,26 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
+    flash[:success] = "User destroyed."
 
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end    
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
+    
+    # not sure where this goes
+    # def admin?
+    #   current_user.admin == true
+    # end
 end

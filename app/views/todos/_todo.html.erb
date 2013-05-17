@@ -1,0 +1,13 @@
+<li>
+  <span class="content"><%= todo.content %></span>
+  <span class="date">Due <%= todo.due_date %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(todo.created_at) %> ago.
+  </span>
+  
+  <% if current_user?(Todo.find_by_id(todo.user_id)) %>
+    <%= link_to "delete", todo, method: :delete,
+                                data: { confirm: "You sure?" },
+                                title: todo.content %>
+  <% end %>  
+</li>
