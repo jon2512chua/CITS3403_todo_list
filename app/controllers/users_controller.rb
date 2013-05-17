@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
+    @items = @user.items.paginate(page: params[:page])
   end
 
   def new
@@ -46,13 +47,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in." 
-      end
-    end
 
     def correct_user
       @user = User.find_by_username(params[:id])
