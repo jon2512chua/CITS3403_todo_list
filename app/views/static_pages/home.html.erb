@@ -1,16 +1,30 @@
 <% if signed_in? %>
+  <% provide(:title, @user.name) %>
   <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/item_form' %>
-      </section>
-    </aside>
-  </div>  
+
+    <div class="span8">
+      <div class="row">
+        <aside class="span4">
+          <section>
+            <%= render 'shared/item_form' %>
+          </section>
+        </aside>
+      </div>
+      <% if @user.items.any? %>
+        <h3><%= @user.items.count %> items left to do</h3>
+        <ul class="items">
+          <%= render @items %>
+        </ul>
+        <%= will_paginate @items %>
+      <% end %>
+    </div>
+  </div>
+
 <% else %>
   <div id="home">
     <div class="reason">
       <h2>Create.</h2>
-      <p>Tasks are easy to add so you can get started right away.</p>	
+      <p>Tasks are easy to add so you can get started right away.</p>
       <%=image_tag("preview1.png", alt: "Preview of todolist", id: "preview1") %>
     </div>
 
