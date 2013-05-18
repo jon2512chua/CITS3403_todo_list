@@ -11,6 +11,24 @@ describe "Static pages" do
     it { should_not have_selector('title', text: '| Home')}
   end
 
+  describe "User home page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:item, user: user, content: "Foo") }
+    let!(:m2) { FactoryGirl.create(:item, user: user, content: "Bar") }
+    before do
+      sign_in user
+      visit root_path
+    end
+
+    it { should have_selector('title', text: user.name) }
+
+    describe "items" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.items.count) }
+    end
+  end
+
   describe "Help page" do
     before { visit help_path }
 
