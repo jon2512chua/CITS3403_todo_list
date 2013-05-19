@@ -14,6 +14,7 @@ doc/
 *̃
 .project
 .DS_Store
+.idea/
 
 # Ignore the coverage report
 /coverage
