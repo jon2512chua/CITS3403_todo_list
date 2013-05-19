@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
       flash[:success] = "Item created!"
       redirect_to root_url
     else
+      @user = current_user
+      @items = @user.items.paginate(page: params[:page]) if signed_in?
       render 'static_pages/home'
     end
   end

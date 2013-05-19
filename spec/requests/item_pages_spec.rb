@@ -18,7 +18,7 @@ describe "Item pages" do
 
       describe "error messages" do
         before { click_button "Post" }
-        it { should have_content('error') } 
+        it { should have_content('error') }
       end
     end
 
@@ -39,7 +39,7 @@ describe "Item pages" do
       before { visit root_path }
 
       it "should delete an item" do
-        expect { click_link "delete" }.to change(Item, :count).by(-1)
+        expect { click_link "X" }.to change(Item, :count).by(-1)
       end
     end
   end

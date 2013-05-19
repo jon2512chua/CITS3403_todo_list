@@ -29,7 +29,7 @@ describe "User pages" do
         end
       end
     end
-    
+
     describe "delete links" do
 
       it { should_not have_link('delete') }
@@ -67,11 +67,6 @@ describe "User pages" do
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
 
-    describe "items" do
-      it { should have_content(m1.content) }
-      it { should have_content(m2.content) }
-      it { should have_content(user.items.count) }
-    end
   end
 
   describe "signup" do
@@ -112,9 +107,9 @@ describe "User pages" do
 
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
-    before do 
+    before do
       sign_in user
-      visit edit_user_path(user) 
+      visit edit_user_path(user)
     end
 
     describe "page" do
