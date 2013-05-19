@@ -1,0 +1,11 @@
+Todos Today
+===============================================
+
+Hi <%= @user.name %>,
+
+These are the items due today:
+<% @user.items.each do |item| %>
+    - <%= item.name %>: <%= item.content %>
+<% end %>
+ 
+Thanks for using Todolist and have a great day!
