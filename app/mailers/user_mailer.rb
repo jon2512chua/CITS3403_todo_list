@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def todo_today(user)
     @user = user
-    mail(:to => @user.email, :subject => "Todos Today")
+    mail(:to => @user.email, :subject => "Todolist | Todos Today")
   end
 end
