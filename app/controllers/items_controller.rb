@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
       flash[:success] = "Item created!"
 
       redirect_to root_url
+      
+      # sets schedulers for email reminders
       # http://stackoverflow.com/questions/7896715/delayed-job-sending-an-email-tomorrow
       UserMailer.delay(run_at: @item.due_date.to_datetime.change({ hour: 18, min: 10 })).todo_today(@user)
     else
