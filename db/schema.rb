@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20130520063720) do
     t.string   "content"
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "completed"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "completed",  :default => false
   end
 
   add_index "items", ["user_id", "created_at"], :name => "index_items_on_user_id_and_created_at"
