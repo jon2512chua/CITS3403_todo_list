@@ -1,14 +1,12 @@
 <% if signed_in? %>
   <% provide(:title, @user.name) %>
   <div class="row">
-    <div class="span8">
-      <div class="row">
-        <aside class="span4">
-          <section>
-            <%= render 'shared/item_form' %>
-          </section>
-        </aside>
-      </div>
+    <aside class="span4">
+      <section>
+        <%= render 'shared/item_form' %>
+      </section>
+    </aside>
+    <div class="span8">      
       <% if @user.items.any? %>
         <h3><%= pluralize(@uncompleted.count, "item") %> left to do</h3>
         <ul class="items">
