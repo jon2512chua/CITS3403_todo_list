@@ -19,6 +19,13 @@ class ItemsController < ApplicationController
     redirect_to root_url
   end
 
+  def complete
+    @item = Item.find(params[:id])
+    @item.update_attribute :completed, true
+    flash[:success] = "#{@item.name} completed."
+    redirect_to root_url
+  end
+
   private
 
     def correct_user
