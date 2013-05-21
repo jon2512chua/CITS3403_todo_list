@@ -2,7 +2,7 @@
 
 ##Things we still have to do
 - Be able to edit items
-  - Todo items
+  - ~~Todo items~~
   - User settings (not necessary if time constraint)
 - Send reminders
   - Add due date to the item model (value can be null)
