@@ -1,7 +1,7 @@
 <% if signed_in? %>
   <% provide(:title, @user.name) %>
   <div class="row">
-    <aside class="span4">
+    <aside class="span2">
       <section>
         <h1>
           <%= gravatar_for @user %>
@@ -13,34 +13,38 @@
       </section>
     </aside>
 
-    <div class="span8">
-      <a id="uncompleted-button">To do</a>
-      <a id="completed-button">Completed</a>
-      <div id="uncompleted">
-        <h3><%= pluralize(@uncompleted.count, "item") %> left to do</h3>
-        <% if @uncompleted.count == 0 %>
+    <div class="span10">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Scheduled</a></li>
+          <li><a href="#tab2" data-toggle="tab">Completed</a></li>
+        </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+          <h3><%= pluralize(@uncompleted.count, "item") %> scheduled</h3>
+          <% if @uncompleted.count == 0 %>
           <section><p>You have nothing scheduled.</p></section>
-        <% else %>
+          <% else %>
           <section>
             <ul class="items">
               <%= render @uncompleted %>
             </ul>
           </section>
-        <% end %>
-      </div>
-
-      <div id="completed">
-        <h3><%= pluralize(@completed.count, "item") %> completed</h3>
-        <% if @completed.count == 0 %>
-          <section><p>Nothing is completed yet.</p></section>
-        <% else %>
-          <section>
-            <ul class="items">
-              <%= render @completed %>
-            </ul>
-          </section>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+          <h3><%= pluralize(@completed.count, "item") %> completed</h3>
+          <% if @completed.count == 0 %>
+            <section><p>Nothing is completed yet.</p></section>
+          <% else %>
+            <section>
+              <ul class="items">
+                <%= render @completed %>
+              </ul>
+            </section>
+          <% end %>          
+        </div>  
+      </div>      
     </div>
   </div>
 <% else %>

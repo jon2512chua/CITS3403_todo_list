@@ -16,18 +16,3 @@
 //= require best_in_place.purr
 //= require bootstrap
 //= require_tree .
-
-$(document).ready(function() {
-  $('#completed').hide();
-  $('#completed-button').click(function() {
-    $('#completed').show();
-    $('#uncompleted').hide();
-    return false;
-  });
-
-  $('#uncompleted-button').click(function() {
-    $('#completed').hide();
-    $('#uncompleted').show();
-    return false;
-  });
-});
