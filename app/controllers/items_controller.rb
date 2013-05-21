@@ -8,9 +8,12 @@ class ItemsController < ApplicationController
       flash[:success] = "Item created!"
       redirect_to root_url
     else
-      @user = current_user
-      @items = @user.items if signed_in?
-      render 'static_pages/home'
+      if signed_in?
+        @user = current_user
+        @uncompleted = @user.items.where("completed='f'")
+        @completed = @user.items.where("completed='t'")
+        render 'static_pages/home'
+      end
     end
   end
 
