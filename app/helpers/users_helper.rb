@@ -8,7 +8,7 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
-# unused for now
+# For "Send email" button in app/views/users/show.html.erb
   def send_email(user, url)
     @user = user
     UserMailer.todo_today(@user).deliver

@@ -16,6 +16,7 @@
           <div class="accordion-inner">
             <span class="content">
               <%= item.content %>
+              <%= item.due_date %>
             </span>
           </div>
         </div>
@@ -39,6 +40,7 @@
           <div class="accordion-inner">
             <span class="content span10">
               <%= best_in_place item, :content %>
+              <%= best_in_place item, :due_date %>
             </span>
           </div>
         </div>
