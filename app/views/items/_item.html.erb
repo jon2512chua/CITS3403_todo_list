@@ -2,6 +2,7 @@
   <span class="name"><%= item.name %></span>
   <br />
   <span class="content"><%= item.content %></span>
+  <span class="due_date"><%= item.due_date %></span><br />
   <% if current_user?(item.user) %>
     <%= link_to "\u2713", complete_item_path(item), :method => :put %>
     <%= link_to "X", item, method: :delete,
