@@ -1,5 +1,14 @@
 #CITS3403 todo list
 
+## Whenever Scheduler
+- Now able to schedule sending of email reminders 
+  - First: run `whenever --update-crontab CITS3403_todo_list --set environment=development` in terminal
+  - Update your gmail account details in `config/environments/development.rb` lines 30 & 31
+    - This would schedule emails to be sent every minute as specified in `config/schedule.rb`
+      - (I chose it to be done this way for the moment for testing purposes. Server time and system time are highly incongruent.)
+
+- *Stopping Scheduler*: run `whenever --update-crontab CITS3403_todo_list --set environment=production` in terminal
+
 ##Things we still have to do
 - Be able to edit items
   - ~~Todo items~~

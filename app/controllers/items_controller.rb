@@ -6,10 +6,6 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(params[:item])
     if @item.save
       flash[:success] = "Item created!"
-      # sets schedulers for email reminders
-      # http://stackoverflow.com/questions/7896715/delayed-job-sending-an-email-tomorrow
-      # UserMailer.delay(run_at: @item.due_date.to_datetime.change({ hour: 22, min: 20 })).todo_today(@user)
-      # UserMailer.delay(run_at: 1.minute.from_now).todo_today(@user)
 
       redirect_to root_url
     else

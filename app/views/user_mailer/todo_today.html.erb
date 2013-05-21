@@ -5,7 +5,10 @@
   </head>
   <body>
     <h1>Todolist | Todos Today</h1>
-    <p>Hi <%#= @user.name %>,</p>
+    <%# @u = User.all %>
+      <%# @u.each do |user| %>
+        <p>Hi <%#= user.name %>,</p>
+      <%# end %>
     <p>These are the items due today:</p>
     <ul>
       <% @user.items.each do |item| %>
