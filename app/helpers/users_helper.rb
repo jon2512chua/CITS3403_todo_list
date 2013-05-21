@@ -8,6 +8,10 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+<<<<<<< HEAD
+=======
+# For "Send email" button in app/views/users/show.html.erb
+>>>>>>> Added ability to delay job
   def send_email(user, url)
     @user = user
     UserMailer.todo_today(@user).deliver
