@@ -1,13 +1,23 @@
 <li>
   <% if current_user?(item.user) %>
     <span class="name">
-      <%= best_in_place item, :name %>
+      <% if completed?(item) %>
+        <%= item.name %>
+      <% else %>
+        <%= best_in_place item, :name %>
+      <% end %>
     </span>
     <br />
     <span class="content">
-      <%= best_in_place item, :content %>
+      <% if completed?(item) %>
+        <%= item.content %>
+      <% else %>
+        <%= best_in_place item, :content %>
+      <% end %>
     </span>
-    <%= link_to "\u2713", complete_item_path(item), :method => :put %>
+    <% if !completed?(item) %>
+        <%= link_to "\u2713", complete_item_path(item), :method => :put %>
+    <% end %>
     <%= link_to "X", item, method: :delete,
                                          data: { confirm: "Are you sure you want to delete this item?" },
                                          title: item.content %>
