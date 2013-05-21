@@ -16,10 +16,12 @@
       <% end %>
     </span>
     <% if !completed?(item) %>
-        <%= link_to "\u2713", complete_item_path(item), :method => :put %>
+      <%= link_to "\u2713", complete_item_path(item), :method => :put %>
+      <%= link_to "X", item, method: :delete,
+                                       data: { confirm: "This item is not completed yet.\n\nAre you sure you want to delete this item?\n" },
+                                       title: item.content %>
+    <% else %>
+      <%= link_to "X", item, method: :delete %>
     <% end %>
-    <%= link_to "X", item, method: :delete,
-                                         data: { confirm: "Are you sure you want to delete this item?" },
-                                         title: item.content %>
   <% end %>
 </li>
