@@ -12,30 +12,37 @@
         <%= render 'shared/item_form' %>
       </section>
     </aside>
+
     <div class="span8">
-      <h3><%= pluralize(@uncompleted.count, "item") %> left to do</h3>
-      <% if @uncompleted.count == 0 %>
-        <section><p>You have nothing schedualed</p></section>
-      <% else %>
-        <section>
-          <ul class="items">
-            <%= render @uncompleted %>
-          </ul>
-        </section>
-      <% end %>
-      <h3><%= pluralize(@completed.count, "item") %> completed</h3>
-      <% if @completed.count == 0 %>
-        <section><p>Nothing is completed yet</p></section>
-      <% else %>
-        <section>
-          <ul class="items">
-            <%= render @completed %>
-          </ul>
-        </section>
-      <% end %>
+      <a id="uncompleted-button">To do</a>
+      <a id="completed-button">Completed</a>
+      <div id="uncompleted">
+        <h3><%= pluralize(@uncompleted.count, "item") %> left to do</h3>
+        <% if @uncompleted.count == 0 %>
+          <section><p>You have nothing scheduled.</p></section>
+        <% else %>
+          <section>
+            <ul class="items">
+              <%= render @uncompleted %>
+            </ul>
+          </section>
+        <% end %>
+      </div>
+
+      <div id="completed">
+        <h3><%= pluralize(@completed.count, "item") %> completed</h3>
+        <% if @completed.count == 0 %>
+          <section><p>Nothing is completed yet.</p></section>
+        <% else %>
+          <section>
+            <ul class="items">
+              <%= render @completed %>
+            </ul>
+          </section>
+        <% end %>
+      </div>
     </div>
   </div>
-
 <% else %>
   <div id="home">
     <div class="reason">
