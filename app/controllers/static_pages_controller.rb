@@ -1,9 +1,11 @@
 class StaticPagesController < ApplicationController
   def home
-    @user = current_user if signed_in?
-    @item = current_user.items.build if signed_in?
-    @uncompleted = @user.items.where("completed='f'") if signed_in?
-    @completed = @user.items.where("completed='t'") if signed_in?
+    if signed_in?
+      @user = current_user
+      @item = current_user.items.build
+      @uncompleted = @user.items.where("completed='f'")
+      @completed = @user.items.where("completed='t'")
+    end
   end
 
   def help

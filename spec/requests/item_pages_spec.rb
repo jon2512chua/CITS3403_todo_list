@@ -13,11 +13,11 @@ describe "Item pages" do
     describe "with invalid information" do
 
       it "should not create a item" do
-        expect { click_button "Post" }.not_to change(Item, :count)
+        expect { click_button "Add" }.not_to change(Item, :count)
       end
 
       describe "error messages" do
-        before { click_button "Post" }
+        before { click_button "Add" }
         it { should have_content('error') }
       end
     end
@@ -27,7 +27,7 @@ describe "Item pages" do
       before { fill_in 'item_content', with: "Item description" }
       before { fill_in 'item_name', with: "Item name" }
       it "should create a item" do
-        expect { click_button "Post" }.to change(Item, :count).by(1)
+        expect { click_button "Add" }.to change(Item, :count).by(1)
       end
     end
   end

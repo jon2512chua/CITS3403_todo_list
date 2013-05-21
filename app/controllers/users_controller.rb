@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
-    @items = @user.items.paginate(page: params[:page])
+    # @items = @user.items.paginate(page: params[:page])
   end
 
   def new
@@ -47,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   private
-
     def correct_user
       @user = User.find_by_username(params[:id])
       redirect_to(root_path) unless current_user?(@user)
