@@ -9,7 +9,10 @@
     <p>These are the items due today:</p>
     <ul>
       <% @user.items.each do |item| %>
-      <li><%= item.name %>: <%= item.content %></li>
+        <% if item.completed? == false && item.due_date == Date.today %>
+        <%# if item.completed? == false %>
+          <li><%= item.name %>: <%= item.content %></li>
+        <% end %>
       <% end %>
     </ul>
     <p>Thanks for using Todolist and have a great day!</p>
