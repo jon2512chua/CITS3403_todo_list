@@ -1,11 +1,13 @@
 Todolist | Todos Today
 =======================
 
-Hi <%= @user.name %>,
+Hi <%#= @user.name %>,
 
 These are the items due today:
 <% @user.items.each do |item| %>
+  <% if item.completed? == false && item.due_date == Date.today %>
     - <%= item.name %>: <%= item.content %>
+  <% end %>
 <% end %>
  
 Thanks for using Todolist and have a great day!

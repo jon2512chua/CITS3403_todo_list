@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'delayed_job_active_record' # required to queue jobs for UserMailer
-gem "daemons", "~> 1.1.9"       # required to run jobs for UserMailer via Delayed::Jobs
+gem 'whenever', :require => false # for running scheduled jobs
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
@@ -10,7 +9,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'execjs'
-# gem 'therubyracer'
+gem 'therubyracer'
 gem 'friendly_id'
 gem 'best_in_place'
 

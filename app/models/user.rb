@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  
+  # https://groups.google.com/forum/?fromgroups#!topic/whenever-gem/Ima-tvdqZds
+  def self.send_reminder
+    @user = User.all
+    @user.each do |user|
+      UserMailer.todo_today(user).deliver
+    end
+  end
 
   def to_param
     username

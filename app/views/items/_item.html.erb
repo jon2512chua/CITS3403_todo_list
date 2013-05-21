@@ -15,7 +15,10 @@
         <div class="accordion-body">
           <div class="accordion-inner">
             <span class="content">
+              <span class="descriptor"><strong>Todo: </strong></span>              
               <%= item.content %>
+              <br>
+              <span class="descriptor"><strong>Due: </strong></span>              
               <%= item.due_date %>
             </span>
           </div>
@@ -39,7 +42,10 @@
         <div id="<%= "#{item.id}" %>" class="accordion-body collapse in">
           <div class="accordion-inner">
             <span class="content span10">
+              <span class="descriptor"><strong>Todo: </strong></span>
               <%= best_in_place item, :content %>
+              <br>
+              <span class="descriptor"><strong>Due: </strong></span>
               <%= best_in_place item, :due_date %>
             </span>
           </div>
