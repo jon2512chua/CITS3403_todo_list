@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require best_in_place
 //= require best_in_place.purr
 //= require bootstrap
 //= require_tree .
+$(document).ready(function() { $("#due_date").datepicker({ dateFormat: "dd/mm/yy" }); });

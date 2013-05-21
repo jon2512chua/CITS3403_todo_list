@@ -227,3 +227,10 @@ aside {
   border: solid 1px #C66;
   &:first-letter { text-transform: uppercase; }
 }
+
+#ui-datepicker-div {
+  background: white;
+  z-index: 9999;
+  border: solid 1px #BBB;
+  border-radius: 3px;
+}
