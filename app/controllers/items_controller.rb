@@ -26,6 +26,19 @@ class ItemsController < ApplicationController
     redirect_to root_url
   end
 
+  def update
+    @item = Item.find params[:id]
+    respond_to do |format|
+      if @item.update_attributes params[:item]
+        format.html { redirect_to(@item, :notice => 'Item was successfully updated.') }
+        format.json { respond_with_bip(@item) }
+      else
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@item) }
+      end
+    end
+  end
+
   private
 
     def correct_user

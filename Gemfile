@@ -10,6 +10,7 @@ gem 'jquery-rails', '2.0.2'
 gem 'execjs'
 gem 'therubyracer'
 gem 'friendly_id'
+gem "best_in_place"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

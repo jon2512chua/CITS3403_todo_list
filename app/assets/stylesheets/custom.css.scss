@@ -144,7 +144,7 @@ input {
 
 /* users index */
 
-.users { 
+.users {
   list-style: none;
   margin: 0;
   li {
@@ -159,17 +159,17 @@ input {
 
 /* items */
 
-.items { 
+.items {
   list-style: none;
   margin: 10px 0 0 0;
 
-  li { 
+  li {
     padding: 10px 0;
     border-bottom: 1px solid #e8e8e8;
   }
 }
 
-.content { 
+.content {
   display: block;
 }
 
@@ -182,4 +182,16 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+/* in-place-edit error message */
+.purr {
+  position: fixed;
+  top: 50px;
+  right: 100px;
+  width: 250px;
+  padding: 20px;
+  background-color: #FCC;
+  border: solid 1px #C66;
+  &:first-letter { text-transform: uppercase; }
 }

@@ -1,11 +1,15 @@
 <li>
-  <span class="name"><%= item.name %></span>
-  <br />
-  <span class="content"><%= item.content %></span>
   <% if current_user?(item.user) %>
+    <span class="name">
+      <%= best_in_place item, :name %>
+    </span>
+    <br />
+    <span class="content">
+      <%= best_in_place item, :content %>
+    </span>
     <%= link_to "\u2713", complete_item_path(item), :method => :put %>
     <%= link_to "X", item, method: :delete,
                                          data: { confirm: "Are you sure you want to delete this item?" },
                                          title: item.content %>
-  <% end %>                                        
+  <% end %>
 </li>
