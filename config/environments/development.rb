@@ -27,8 +27,8 @@ Todolist::Application.configure do
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'gmail.com',
-      :user_name            => 'username@gmail.com',
-      :password             => 'password',
+      :user_name            => '3403todolist@gmail.com',
+      :password             => 'todolist3403',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
 

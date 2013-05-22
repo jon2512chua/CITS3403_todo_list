@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   def self.send_reminder
     @user = User.all
     @user.each do |user|
-      UserMailer.todo_today(user).deliver
+      UserMailer.todo_today(user).deliver if user.items.any? {|item| item.due_date == Date.tomorrow }
     end
   end
 

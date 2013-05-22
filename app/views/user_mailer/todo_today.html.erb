@@ -5,11 +5,11 @@
   </head>
   <body>
     <h1>Todolist | Todos Today</h1>
-    <p>Hi <%#= @user.name %>,</p>
+    <p>Hi <%= @user.name %>,</p>
     <p>These are the items due today:</p>
     <ul>
       <% @user.items.each do |item| %>
-        <% if item.completed? == false && item.due_date == Date.today %>
+        <% if item.completed? == false && item.due_date == Date.tomorrow %>
           <li><%= item.name %>: <%= item.content %></li>
         <% end %>
       <% end %>
