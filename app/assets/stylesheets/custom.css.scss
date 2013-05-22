@@ -173,24 +173,36 @@ input {
     margin: 0;
   }
   .accordion-toggle {
-    padding: 4px 1em;
+    padding: 6px 1em 4px 1em;
   }
-  .accordion-body {
+  .accordion-heading {
+    height: auto;
+  }
+  .accordion-body {  /* todo content */
     .accordion-inner {
       padding: 1px 1em;
-      .span {
-        padding: 5px 0;
-      }
-      .best_in_place {
+      .copy_bestinplace { /* completed todo */
         padding: 6px 0;
       }
     }
   }
-
-  .best_in_place {
+  .copy_bestinplace { /* completed todo name */
     padding: 2px 0;
     display: inline-block;
   }
+  .best_in_place { /* incompleted todo*/
+    padding: 2px 0;
+    display: inline-block;
+    .input_textbox {
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      position: relative;
+      bottom: 2px;
+      width: 600px;
+    }
+  }
+
   .function_link {
     display: inline-block;
     margin: 0.25em 0.25em;
