@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130521120434) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "completed",  :default => false
     t.date     "due_date"
+  end
 
   add_index "items", ["user_id", "created_at"], :name => "index_items_on_user_id_and_created_at"
 
