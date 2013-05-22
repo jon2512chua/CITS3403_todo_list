@@ -20,7 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 #every 1.day, :at => '10:00am' do
-every 1.day, :at => '1:47pm' do # localhost time: GMT+0
+every 1.day, :at => '7:00am' do # localhost time: GMT+8
   runner "User.send_reminder"
 end
 
