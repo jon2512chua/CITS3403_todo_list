@@ -22,11 +22,6 @@ describe Item do
     it { should_not be_valid }
   end
 
-  describe "with blank content" do
-    before { @item.content = " " }
-    it { should_not be_valid }
-  end
-
   describe "with blank name" do
     before { @item.name = " " }
     it { should_not be_valid }
@@ -39,6 +34,11 @@ describe Item do
 
   describe "with name that is too long" do
     before { @item.name = "a" * 81 }
+    it { should_not be_valid }
+  end
+
+  describe "with date that is in past" do
+    before { @item.due_date = "2011-11-11" }
     it { should_not be_valid }
   end
 
