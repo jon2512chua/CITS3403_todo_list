@@ -6,8 +6,8 @@
 - Send reminders
   - ~~Add due date to the item model (value can be null)~~
   - ~~Add validations for due date and tests~~
-  - Write function that sends email if item is less than one day till due date
-  - Use cron or some other scheduling system to call that function every day/hour (probably better if we use day since we're only using date and not datetime and we won't take into account different timezones)
+  - ~~Write function that sends email if item is less than one day till due date~~
+  - ~~Use cron or some other scheduling system to call that function every day/hour (probably better if we use day since we're only using date and not datetime and we won't take into account different timezones)~~
 - Make sure there are tests for everything if possible...
 - Make everything pretty @"@
   - ~~Create item form~~
