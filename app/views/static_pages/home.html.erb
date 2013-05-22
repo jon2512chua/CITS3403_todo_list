@@ -23,13 +23,9 @@
         <div class="tab-pane active" id="tab1">
           <h3><%= pluralize(@uncompleted.count, "item") %> scheduled</h3>
           <% if @uncompleted.count == 0 %>
-          <section><p>You have nothing scheduled.</p></section>
+            <section><p>You have nothing scheduled.</p></section>
           <% else %>
-          <section>
-            <ul class="items">
-              <%= render @uncompleted %>
-            </ul>
-          </section>
+            <section class="items"><%= render @uncompleted %></section>
           <% end %>
         </div>
         <div class="tab-pane" id="tab2">
@@ -37,11 +33,7 @@
           <% if @completed.count == 0 %>
             <section><p>Nothing is completed yet.</p></section>
           <% else %>
-            <section>
-              <ul class="items">
-                <%= render @completed %>
-              </ul>
-            </section>
+            <section class="items"><%= render @completed %></section>
           <% end %>
         </div>
       </div>

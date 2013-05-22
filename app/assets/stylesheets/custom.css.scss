@@ -166,6 +166,38 @@ input {
   li {
     padding: 0.25em 0;
   }
+  .accordion-group {
+    margin: 0.25em 0.5em;
+  }
+  .span8 {
+    margin: 0;
+  }
+  .accordion-toggle {
+    padding: 4px 1em;
+  }
+  .accordion-body {
+    .accordion-inner {
+      padding: 1px 1em;
+      .span {
+        padding: 5px 0;
+      }
+      .best_in_place {
+        padding: 6px 0;
+      }
+    }
+  }
+
+  .best_in_place {
+    padding: 2px 0;
+    display: inline-block;
+  }
+  .function_link {
+    display: inline-block;
+    margin: 0.25em 0.25em;
+    position: relative;
+    bottom: 4px;
+    left: 20px;
+  }
 }
 
 .content {
@@ -182,6 +214,7 @@ aside {
     margin-bottom: 5px;
   }
 }
+
 
 /* in-place-edit error message */
 .purr {

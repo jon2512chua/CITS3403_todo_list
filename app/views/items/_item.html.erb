@@ -1,51 +1,38 @@
-<li>
+
   <% if current_user?(item.user) %>
     <% if completed?(item) %>
-      <div class="accordion-group">
+      <div class="accordion-group span9">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-parent="#accordion2" >
-            <span class="name span9">
-              <%= item.name %>
-              <span class="span1">
-                <%= link_to "X", item, method: :delete %>
-              </span>
-            </span>
+          <a class="accordion-toggle" >
+            <span class="name span8 best_in_place"><%= item.name %></span>
+            <%= link_to "X", item, method: :delete, class: "function_link" %>
           </a>
         </div>
         <div class="accordion-body">
           <div class="accordion-inner">
-            <span class="content">
-              <%= item.content %>
-            </span>
+            <span class="content span8 best_in_place"><%= item.content %></span>
           </div>
         </div>
       </div>
     <% else %>
-      <div class="accordion-group">
+      <div class="accordion-group span9">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="<%="##{item.id}" %>" >
-            <span class="name span9">
-              <%= best_in_place item, :name %>
-              <span class="span1">
-                <%= link_to "\u2713", complete_item_path(item), :method => :put %>
-                <%= link_to "X", item, method: :delete,
+          <a class="accordion-toggle" data-toggle="collapse" href="<%="##{item.id}" %>" >
+            <span class="span8"><%= best_in_place item, :name %></span>
+            <%= link_to "\u2713", complete_item_path(item), method: :put, class: "function_link" %>
+            <%= link_to "X", item, method: :delete, class: "function_link",
                                        data: { confirm: "This item is not completed yet.\n\nAre you sure you want to delete this item?\n" },
                                        title: item.content %>
-               </span>
-            </span>
           </a>
         </div>
         <div id="<%= "#{item.id}" %>" class="accordion-body collapse in">
           <div class="accordion-inner">
-            <span class="content span10">
-              <%= best_in_place item, :content %>
-            </span>
+            <span class="content span8"><%= best_in_place item, :content %></span>
           </div>
         </div>
       </div>
     <% end %>
   <% end %>
-</li>
 
 
 
