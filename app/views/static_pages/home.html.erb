@@ -20,7 +20,7 @@
         </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
-          <h3><%= pluralize(@uncompleted.count, "item") %> scheduled</h3>
+          <h3 class="count"><%= pluralize(@uncompleted.count, "item") %> scheduled</h3>
           <% if @uncompleted.count == 0 %>
             <section><p>You have nothing scheduled.</p></section>
           <% else %>
@@ -28,7 +28,7 @@
           <% end %>
         </div>
         <div class="tab-pane" id="tab2">
-          <h3><%= pluralize(@completed.count, "item") %> completed</h3>
+          <h3 class="count"><%= pluralize(@completed.count, "item") %> completed</h3>
           <% if @completed.count == 0 %>
             <section><p>Nothing is completed yet.</p></section>
           <% else %>
