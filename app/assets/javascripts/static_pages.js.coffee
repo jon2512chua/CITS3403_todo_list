@@ -4,5 +4,5 @@
 jQuery ->
   $('.best_in_place').best_in_place()
   $('.collapse').collapse()
-  $.datepicker.setDefaults({ dateFormat: "yy-mm-dd" });
-  $("#due_date").datepicker({ dateFormat: "yy-mm-dd" });
+  $.datepicker.setDefaults({ dateFormat: "yy-mm-dd", minDate: "+0d"})
+  $("#due_date").datepicker({ dateFormat: "yy-mm-dd" })
