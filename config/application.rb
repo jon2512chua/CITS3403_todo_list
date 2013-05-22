@@ -64,5 +64,9 @@ module Todolist
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Time zone setting
+    config.time_zone = 'Perth'
+    config.active_record.default_timezone = 'Perth'
   end
 end
