@@ -19,18 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
-#every 1.day, :at => '10:00am' do
 every 1.day, :at => '7:00am' do # localhost time: GMT+8
   runner "User.send_reminder"
 end
-
-# every 1.day, :at => '9:47pm' do
-#   runner "User.send_reminder"
-# end
-
-# every 1.minute do
-#   runner "User.send_reminder"
-# end
 
 # FOR SCHEDULER TO RUN IN DEVELOPMENT MODE
 # whenever --update-crontab CITS3403_todo_list --set environment=development

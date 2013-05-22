@@ -1,5 +1,26 @@
 <% provide(:title, 'Sitemap') %>
 <h1>Sitemap</h1>
-<%= link_to "About us", about_path %>
-<%= link_to "Help", help_path %>
-<%= link_to "Home", root_path %>
+<div class="toleft">
+	<div class="slickplan slickplan-0 slickplan-with-home">
+		<div class="slickplan-sitemap">
+			<ul class="slickplan-level-1">
+				<li class="slickplan-home"><div><%= link_to "Home", root_url %></div></li>
+				<li class="slickplan-first slickplan-parent"><div><%= link_to "Sign in", signin_url %></div>
+					<ul class="slickplan-level-2">
+						<li class="slickplan-first"><div><p>Settings</p></div></li>
+						<li><div><p>Users</p></div></li>
+						<li class="slickplan-last"><div><p>Sign out</p></div></li>
+					</ul>
+				</li>
+				<li class="slickplan-last"><div><%= link_to "Sign up", signup_url %></div></li>
+			</ul>
+		</div>
+		<div class="slickplan-utils slickplan-footer">
+			<ul>
+				<li><div><%= link_to "About", about_url %></div></li>
+				<li><div><%= link_to "Sitemap", sitemap_url %></div></li>
+				<li><div><%= link_to "Help", help_url %></div></li>
+			</ul>
+		</div>
+	</div>
+</div>	
