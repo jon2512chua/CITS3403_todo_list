@@ -9,12 +9,12 @@
 /tmp
 
 # Ignore other unneeded files.
-doc/
 *.swp
 *̃
 .project
 .DS_Store
 .idea/
+.rspec
 
 # Ignore the coverage report
 /coverage
