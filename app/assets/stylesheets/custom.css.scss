@@ -259,6 +259,9 @@ aside {
 #ui-datepicker-div {
   background: white;
   z-index: 9999;
-  border: solid 1px #BBB;
   border-radius: 3px;
+}
+
+.ui-datepicker-next {
+  float: right;
 }
