@@ -1,14 +1,7 @@
-<div class="row">
-  <aside class="span5 offset3">
-    <% provide(:title, @user.username) %>
-    <h1><%= @user.username %></h1>
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-      <br>
-      <h1><%= @user.email %></h1>
-    </section>
-  </aside>
-</div>
+<% if signed_in? %>
+  <% if current_user?(@item.user) %>
+    This page should show the user getting friend invites.
+  <% else %>
+    <%= render 'shared/todolist' %>
+  <% end %>
+<% end %>

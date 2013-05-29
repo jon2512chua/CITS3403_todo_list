@@ -1,0 +1,32 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <% if current_user?(@item.user) %>
+  <div class="span10">
+  <% else %>
+  <div class="span12">
+  <% end %>
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Scheduled</a></li>
+        <li><a href="#tab2" data-toggle="tab">Completed</a></li>
+      </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <h3 class="count"><%= pluralize(@uncompleted.count, "item") %> scheduled</h3>
+        <% if @uncompleted.count == 0 %>
+          <section><p><%= @user.name %> has nothing scheduled.</p></section>
+        <% else %>
+          <section class="items"><%= render partial: 'shared/item', collection: @uncompleted %></section>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <h3 class="count"><%= pluralize(@completed.count, "item") %> completed</h3>
+        <% if @completed.count == 0 %>
+          <section><p>Nothing is completed yet.</p></section>
+        <% else %>
+          <section class="items"><%= render partial: 'shared/item', collection: @completed %></section>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

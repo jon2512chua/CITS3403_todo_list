@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
+    @item = @user.items.build
+    @uncompleted = @user.items.where("completed='f'")
+    @completed = @user.items.where("completed='t'")
   end
 
   def new
