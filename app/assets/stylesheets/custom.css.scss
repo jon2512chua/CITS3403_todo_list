@@ -25,14 +25,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  text-align: center;
-}
-
-h2 {
   font-size: 3em;
-  letter-spacing: -1px;
-  margin: 30px 0;
-  font-weight: normal;
+  text-align: center;
+  margin-bottom: 1.5em;
 }
 
 p {
@@ -264,4 +259,27 @@ aside {
 
 .ui-datepicker-next {
   float: right;
+}
+
+.reason {
+  h2 {
+    font-size: 3em;
+  }
+}
+
+#about {
+  h2 {
+    font-size: 2em;
+    margin-top: 50px;
+    margin-bottom: 5px;
+  }
+
+  ol, ul {
+    margin: 0;
+    list-style: none;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
 }
